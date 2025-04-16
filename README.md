@@ -1,6 +1,18 @@
 <h1>API Node com Express e PostgreSQL</h1>
-<p>Esta é uma API desenvolvida em Node.js com Express que utiliza PostgreSQL como banco de dados, configurado em um container Docker. A API implementa um CRUD completo para gerenciar contatos e categorias, que possuem um relacionamento entre si.
-A API é parte de uma aplicação que será desenvolvida futuramente. Para testar as rotas, foi utilizado o Insomnia.</p>
+<p>Esta é uma API desenvolvida em Node.js com Express que utiliza PostgreSQL como banco de dados, configurado em um container Docker.
+
+<h1>Índice</h1>
+
+1. [Descrição](#descrição)
+2. [Tecnologias Utilizadas](#tecnologias-utilizadas)
+3. [Instalação e configuração](#instalação)
+4. [Uso](#uso)
+
+<h1>Descrição</h1>
+
+A API implementa um CRUD completo para gerenciar contatos e categorias, que possuem um relacionamento entre si.
+Ela é parte de uma aplicação que foi desenvolvida com React.js, recomendo que visite o <a href="https://github.com/daniel-barbosaa/mycontactsfe" alt="link do repositório">repositório do front-end</a>. Para testar as rotas, foi utilizado o Insomnia.</p>
+
 <h2>Instalação e Configuração</h2>
 <h3>Pré-requisitos</h3>
 <p>Certifique-se de ter instalado na sua máquina:</p>
@@ -13,17 +25,18 @@ A API é parte de uma aplicação que será desenvolvida futuramente. Para testa
 
 <h3>Passo a passo</h3>
 <h4>1. Clone o repositório</p>
-  
-```bash
-git clone https://github.com/daniel-barbosaa/api-express-crud.git
-cd api-express-crud
-````
+
+````bash
+git clone https://github.com/daniel-barbosaa/mycontactsapi-postgresql.git
+cd mycontactsapi-postgresql```
 
 <h4>2. Instale as dependências</h4>
-  
+
 ```bash
 npm install
+
 ou
+
 yarn
 ````
 
@@ -38,7 +51,7 @@ yarn
 
 ```bash
 docker run --name pg -e POSTGRES_USER=root -e POSTGRES_PASSWORD=root -e POSTGRES_DB=api_database -p 5432:5432 -d postgres
-````
+```
 
 <strong>O que o comando faz:</strong>
 
@@ -48,27 +61,27 @@ docker run --name pg -e POSTGRES_USER=root -e POSTGRES_PASSWORD=root -e POSTGRES
   -e POSTGRES_DB=api_database \     # Cria o banco de dados chamado "api_database"
   -p 5432:5432 \                    # Mapeia a porta local 5432 para a porta 5432 do container
   -d postgres                       # Usa a imagem oficial do PostgreSQL e roda o container em modo "detached"
-````
+```
+
 3. <strong>Inicie o container</strong>
 <p>Se o container não estiver rodando, você pode iniciá-lo com:</p>
 
 ```bash
  docker start api-postgres
-````
+```
 
 4. <strong>Rode o script para iniciar o banco de dados</strong>
 
-````bash
+```bash
 docker exec -i pg psql -U root -d api_database < src/database/schema.sql
 
-````
-
+```
 
 <h4>4. Inicie a aplicação</h4>
 
 ```bash
 yarn dev
-````
+```
 
 <h2>Como usar</h2>
 
@@ -110,11 +123,10 @@ yarn dev: Inicia o servidor em modo de desenvolvimento com nodemon.
 - <strong>Docker</strong> - Para containerização do banco de dados.
 - <strong>Insomnia</strong> - Ferramenta para teste de APIs.
 
+<h2>Observação</h2>
+
+Após criar o banco de dados no container Docker, não se esqueça de configurar o client no arquivo responsável pela inicialização da conexão com o banco, preenchendo os dados de acesso conforme o seu ambiente.
+
 <h2>Contribuição</h2>
 
 Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests.
-
-
-
-
-
